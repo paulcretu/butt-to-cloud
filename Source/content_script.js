@@ -22,7 +22,10 @@ function walk(node)
 			break;
 
 		case 3: // Text node
-			handleText(node);
+			// xss fix
+			if (node.parentElement.tagName.toLowerCase() != "script") {
+                handleText(node);
+            }
 			break;
 	}
 }
@@ -31,10 +34,12 @@ function handleText(textNode)
 {
 	var v = textNode.nodeValue;
 
-	v = v.replace(/\bThe Cloud\b/g, "My Butt");
-	v = v.replace(/\bThe cloud\b/g, "My butt");
-	v = v.replace(/\bthe Cloud\b/g, "my Butt");
-	v = v.replace(/\bthe cloud\b/g, "my butt");
+	v = v.replace(/\bMy Butt\b/g, "The Cloud");
+	v = v.replace(/\bMy butt\b/g, "The cloud");
+	v = v.replace(/\bmy Butt\b/g, "the Cloud");
+	v = v.replace(/\bmy butt\b/g, "the cloud");
+	v = v.replace(/\bButt\b/g, "Cloud");
+	v = v.replace(/\bbutt\b/g, "cloud");
 	
 	textNode.nodeValue = v;
 }

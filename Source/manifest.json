@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
-	"name": "Cloud To Butt",
+	"name": "Butt To Cloud",
 	"version": "1.0",
-	"description": "Replaces the text 'the cloud' with 'my butt'.",
+	"description": "Replaces the text 'butt' and 'my butt' with 'cloud' and 'the cloud'.",
 	"content_scripts": 
 	[
 		{
